@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>R6 Random Operator Generator</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #111; color: #fff; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+  h1 { margin-bottom: 10px; }
+  .btn { padding: 12px 20px; border: none; border-radius: 10px; background: #444; color: white; font-size: 18px; margin: 10px; cursor: pointer; }
+  .btn:hover { background: #666; }
+  #result { font-size: 30px; margin-top: 20px; font-weight: bold; }
+  .toggle { margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<h1>R6 Random Operator Generator</h1>
+<button class="btn" onclick="roll()">ROLL</button>
+<select class="toggle" id="sideSelect">
+  <option value="attack">Attack</option>
+  <option value="defense">Defense</option>
+</select>
+<div id="result"></div>
+
+<script>
+const attackOps = [
+  "Rauora","Striker","Deimos","Ram","Brava","Grim","Sens","Osa","Flores","Zero","Ace",
+  "Iana","Kali","Amaru","Nokk","Gridlock","Nomad","Maverick","Lion","Finka","Dokkaebi",
+  "Zofia","Ying","Jackal","Hibana","Capitao","Blackbeard","Buck","Sledge","Thatcher",
+  "Ash","Thermite","Montagne","Twitch","Blitz","Iq","Fuze","Glaz"
+];
+
+const defenseOps = [
+  "Denari","Skopos","Sentry","Tubarao","Fenrir","Solis","Azami","Thorn","Thunderbird",
+  "Aruni","Melusi","Oryx","Wamai","Goyo","Warden","Mozzie","Kaid","Clash","Maestro",
+  "Alibi","Vigil","Ela","Lesion","Mira","Echo","Caveira","Valkyrie","Frost","Mute",
+  "Smoke","Castle","Pulse","Doc","Rook","Jager","Bandit","Tachanka","Kapkan"
+];
+
+function roll() {
+  const side = document.getElementById('sideSelect').value;
+  const list = side === 'attack' ? attackOps : defenseOps;
+  const result = list[Math.floor(Math.random() * list.length)];
+  document.getElementById('result').textContent = result;
+  if (typeof completion === 'function') completion(result);
+}
+</script>
+</body>
+</html>
